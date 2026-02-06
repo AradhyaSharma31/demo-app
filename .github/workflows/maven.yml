@@ -3,8 +3,7 @@ name: Publish Maven Package
 on:
   push:
     branches:
-      - legacy
-      - test
+      - main
   release:
     types: [created]
   workflow_dispatch:
@@ -32,7 +31,7 @@ jobs:
           server-id: github 
 
       - name: Maven Build and Test
-        run: mvn -B clean package --file base/pom.xml
+        run: mvn -B clean package --file pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
